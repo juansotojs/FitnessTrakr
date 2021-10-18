@@ -13,7 +13,7 @@ const AddActivity = (props) => {
             <div className='newPost'>
                 <form onSubmit={ async (event) => {
                     await event.preventDefault();
-                    fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+                    fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json',

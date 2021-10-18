@@ -13,7 +13,7 @@ const AddRoutine = (props) => {
             <div className='newPost'>
                 <form onSubmit={ async (event) => {
                     await event.preventDefault();
-                    fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+                    fetch('https://fitnesstrac-kr.herokuapp.com/api/routines', {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json',

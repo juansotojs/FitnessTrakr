@@ -8,7 +8,7 @@ const Routines = (props) => {
     const setRoutines = props.setRoutines;
 
     async function getRoutines() {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+      fetch('https://fitnesstrac-kr.herokuapp.com/api/routines', {
         headers: {
           'Content-Type': 'application/json',
         },

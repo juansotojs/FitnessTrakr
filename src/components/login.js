@@ -11,7 +11,7 @@ const Login = (props) => {
   const token = props.token;
   let history = useHistory();
     const existing = (props) => {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
+      fetch('https://fitnesstrac-kr.herokuapp.com/api/users/login', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const Login = (props) => {
   .catch(console.error);
   }
     const register = (props) => {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+      fetch('https://fitnesstrac-kr.herokuapp.com/api/users/register', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

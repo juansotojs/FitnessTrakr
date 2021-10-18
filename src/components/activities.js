@@ -9,7 +9,7 @@ const Activities = (props) => {
     const setActivities = props.setActivities;
 
     async function getActivities() {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+      fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
         headers: {
           'Content-Type': 'application/json',
         },

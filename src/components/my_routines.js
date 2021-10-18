@@ -24,7 +24,7 @@ const MyRoutines = (props) => {
     getMe();
     async function getMyRoutines() {
      
-      fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${userObj.username}/routines`, {
+      fetch(`https://fitnesstrac-kr.herokuapp.com/api/users/${userObj.username}/routines`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
