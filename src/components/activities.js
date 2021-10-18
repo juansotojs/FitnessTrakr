@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+import AddActivity from './AddActivity';
 
 
 const Activities = (props) => {
     const activities = props.activities;
-    const setPosts = props.setPosts;
     const token = props.token;
-    const code = props.code;
     const setActivities = props.setActivities;
-    const setId = props.setId;
-    let history = useHistory();
 
     async function getActivities() {
       fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
@@ -20,26 +16,21 @@ const Activities = (props) => {
       }).then(response => response.json())
         .then(result => {
             setActivities(result);
-            console.log("activities", activities);
         })
         .catch(console.error);
 
-        //const request = await fetch('https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT/posts');
-        //const response = await request.json();
-        //setPosts(response.data.posts);
     }
-    //useEffect(() => getRoutines(), []);
-    getActivities();
+    useEffect(() => getActivities(), []);
+    
     
     return <>
     <BrowserRouter>
     <div className='posts'>
       <div className='status'>
         <h1>Activities</h1>
-        <input type='text' placeholder='Search Activities'></input>
         { token ? 
         <div className='link'>
-        <Link to='/posts/newpost' className='aType'>Add Post</Link>
+        <Link to='/activities/newactivity' className='aType'>Add Activity</Link>
       </div>
        : null}
       </div>
@@ -49,6 +40,7 @@ const Activities = (props) => {
       {activities.map((activity, idx) => 
         <div key={idx} className="card">
           <div className='card-info'>
+          <h3>Name: </h3>
           <h2>{activity.name}</h2>
           <div className="info">
           <div className="subInfo">
@@ -61,8 +53,11 @@ const Activities = (props) => {
           
     </div>
     </Route>
-    
-    
+    <Route exact path="/activities/newactivity">
+    <div className="cards">
+      <AddActivity token={token} getActivities={getActivities}/>
+    </div>
+    </Route>
     </div>
     </BrowserRouter>
     </>

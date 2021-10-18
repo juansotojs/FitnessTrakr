@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const Login = (props) => {
     })
   }).then(response => response.json())
     .then(result => {
-     setToken(result.token);
+     localStorage.setItem('token', result.token);
      history.push("/home");
    })
   .catch(console.error);
@@ -41,13 +41,19 @@ const Login = (props) => {
           .then(result => {
            console.log('register', result);
            if(result.token){
-             setToken(result.token);
+             localStorage.setItem('token', result.token);
              history.push("/home");
            } 
           })
-            //.catch(console.error);
-            //console.log(results);
     }
+
+    useEffect(() => {
+      const foundToken = localStorage.getItem('token');
+      if(foundToken){
+        setToken(foundToken);
+      }
+    }, []);
+
     return <> 
     <BrowserRouter>
     <div className='posts'>

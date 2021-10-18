@@ -188,3 +188,7 @@ a{
     display: flex;
     flex-direction: column;
 }
+.activ{
+    height: 100px;
+    overflow: scroll;
+}
